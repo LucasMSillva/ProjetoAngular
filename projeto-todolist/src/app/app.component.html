@@ -1,0 +1,30 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="#">Linkedin</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">GitHub</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://getbootstrap.com/docs/5.0/components/navs-tabs/" tabindex="-1" aria-disabled="false">BootStrap</a>
+  </li>
+</ul>
+ 
+
+ 
+ <!-- TO-DO LIST -->
+  <div style="text-align: center;">
+     <h3>To-do List Angular</h3>
+       <p>Adicione uma tarefa e o horário:</p>
+          <input [(ngModel)]="tarefa"type="text"> as
+          <input [(ngModel)]="horario"  type="time"><br><br>
+          <button (click)="adicionartarefa()"  class="btn btn-primary">Adicionar tarefa</button>
+   <ul>
+      <li *ngFor="let tarefa of tarefas, horario of tarefas" > {{ tarefa.tarefas }} as {{ tarefa.horario }} </li>
+     </ul>
+  </div>
+
+<router-outlet></router-outlet>
