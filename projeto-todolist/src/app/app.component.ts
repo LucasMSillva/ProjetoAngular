@@ -8,31 +8,36 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  tarefa:string = "";
-  horario = "";
-  tarefas:any [] = [];
- 
-  formAtividade!: FormGroup;
 
-constructor(){}
+  public tarefas: Array<Atividade> = [];
+  public formAtividade!: FormGroup;
 
-createForm(atividade: Atividade){
-  this.formAtividade = new FormGroup({
-    atividade: new FormControl(atividade.atividade),
-    horario: new FormControl(atividade.horario)
-   })
+  constructor(){}
+
+  createForm(atividade: Atividade){
+    this.formAtividade = new FormGroup({
+      atividade: new FormControl(atividade.atividade),
+      horario: new FormControl(atividade.horario)
+    });
+  }
+
+  ngOnInit(): void {
+    this.createForm(new Atividade());
+  }
+
+  onSubmit(){
+    const dados = {
+      atividade: this.formAtividade.get('atividade')?.value,
+      horario: this.formAtividade.get('horario')?.value
+    }
+    this.tarefas.push(dados);
+  }
+
+  // removeAtividade(){
+  //   this.tarefas.splice((tarefa), 1)
+  // }
+
+  remove(atividade: Atividade): void {
+    this.tarefas = this.tarefas.filter(item => item !== atividade);
+  }
 }
-
-ngOnInit(): void {
-  this.createForm(new Atividade());
-}
-
-onSubmit(){
-  console.log(this.formAtividade.value); 
-  const dados = { 
-    atividade: this.formAtividade.get('tarefa')?.value, 
-    horario: this.formAtividade.get('horario')?.value }
-  console.log(dados)
-}
-}
-
