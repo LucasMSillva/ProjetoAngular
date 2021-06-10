@@ -1,0 +1,15 @@
+<p>formulario works!</p>
+<!-- FORMULARIO COM REACTIVE FORMS -->
+
+<form  [formGroup]="formCliente" class="form-honrizontal" (ngSubmit)="onSubmit()" >
+    
+    <div class="form-group">
+
+        <div class="col-sm-12">
+            <label for="nome" class="control-label">Atividade</label>
+            <input type="text"   name="atividade" id="atividade" formControlName="atividade" placeholder="Exemplo: acordar." >
+            <label for="email" class="control-label">Horario</label>
+            <input type="time"  name="horario" id="horario" formControlName="horario"  placeholder="Exemplo: (08:00)">
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Enviar</button>

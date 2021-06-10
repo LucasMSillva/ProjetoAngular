@@ -1,30 +1,34 @@
 <!-- NAV BAR -->
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="#">Linkedin</a>
+    <a class="nav-link active" aria-current="page" href="#">Projeto</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="https://github.com/LucasMSillva/ProjetoAngular">GitHub</a>
+    <a class="nav-link" href="https://github.com/LucasMSillva/ProjetoAngular" target="_blank">GitHub</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
+    <a class="nav-link" href="https://angular.io/" target="_blank">Angular</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="https://getbootstrap.com/docs/5.0/components/navs-tabs/" tabindex="-1" aria-disabled="false">BootStrap</a>
+    <a class="nav-link" href="https://getbootstrap.com/docs/5.0/components/navs-tabs/" target="_blank">BootStrap</a>
   </li>
 </ul>
  
+<!-- Mandando apresentar o formulario aqui no app.component -->
+<!-- <app-formulario></app-formulario> -->
 
- <!-- TO-DO LIST -->
-  <div style="text-align: center;">
-     <h3>To-do List Angular</h3>
-       <p>Adicione uma tarefa e o horário:</p>
-          <input [(ngModel)]="tarefa"type="text"> as
-          <input [(ngModel)]="horario"  type="time"><br><br>
-          <button (click)="adicionartarefa()"  class="btn btn-primary">Adicionar tarefa</button>
-   <ul>
-      <li *ngFor="let tarefa of tarefas, horario of tarefas" > {{ tarefa.tarefas }} as {{ tarefa.horario }} </li>
-     </ul>
-  </div>
 
-<router-outlet></router-outlet>
+
+ 
+                         <!-- TO-DO LIST -->
+<div style="text-align: center;">
+                         <h3>To-do List Angular</h3>
+<div class="form-group" [formGroup]="formAtividade" (ngSubmit)="onSubmit()">
+         <input type="text" id="tarefa" formControlName="atividade"  placeholder="Exemplo: acordar"> as
+         <input type="time" id="horario" formControlName="horario"><br><br>     
+    <ul>
+       <li *ngFor="let tarefa of tarefas" > {{ tarefa.atividade }} <li> 
+  </ul>
+  <button (click)="onSubmit()"  class="btn btn-primary">Adicionar tarefa</button>
+</div>
+</div >
