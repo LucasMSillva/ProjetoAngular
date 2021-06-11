@@ -1,6 +1,6 @@
 import { Atividade } from './atividade';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -16,9 +16,10 @@ export class AppComponent implements OnInit {
 
   createForm(atividade: Atividade){
     this.formAtividade = new FormGroup({
-      atividade: new FormControl(atividade.atividade),
-      horario: new FormControl(atividade.horario)
+      atividade: new FormControl(atividade.atividade,[Validators.required, Validators.maxLength(10)]),
+      horario: new FormControl(atividade.horario, [Validators.required])
     });
+    
   }
 
   ngOnInit(): void {
@@ -26,18 +27,20 @@ export class AppComponent implements OnInit {
   }
 
   onSubmit(){
-    const dados = {
+    if (this.formAtividade.valid) {
+      const dados = {
       atividade: this.formAtividade.get('atividade')?.value,
       horario: this.formAtividade.get('horario')?.value
     }
+    
     this.tarefas.push(dados);
+    this.formAtividade.reset();
+    return;
   }
+  alert('Campo Obrigatorio');
 
   // removeAtividade(){
   //   this.tarefas.splice((tarefa), 1)
   // }
-
-  remove(atividade: Atividade): void {
-    this.tarefas = this.tarefas.filter(item => item !== atividade);
-  }
+}
 }

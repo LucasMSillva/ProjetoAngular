@@ -24,13 +24,17 @@
                          <div style="text-align: center;">
                           <h3>To-do List Angular</h3>
                           <div class="form-group" [formGroup]="formAtividade" (ngSubmit)="onSubmit()">
-                            <input type="text" id="atividade" formControlName="atividade"  placeholder="Exemplo: acordar"> as
-                            <input type="time" id="horario" formControlName="horario"><br><br>
+                            <input type="text" id="atividade" formControlName="atividade"  required="true" placeholder="Tarefa"> as
+                            <input type="time" id="horario" formControlName="horario" ><br><br>
+                            
                             <ul>
                               <li *ngFor="let tarefa of tarefas" >
                                 {{ tarefa.atividade }} as {{ tarefa.horario }}  <button (click)="remove(tarefa)">remove</button>
+                                
                               <li>
                             </ul>
                             <button (click)="onSubmit()"  class="btn btn-primary">Adicionar tarefa</button>
                           </div>
                         </div>
+
+      
