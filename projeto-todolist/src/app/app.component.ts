@@ -22,6 +22,10 @@ export class AppComponent implements OnInit {
     
   }
 
+  remove(atividade: Atividade): void {
+    this.tarefas = this.tarefas.filter(item => item !== atividade);
+  }
+
   ngOnInit(): void {
     this.createForm(new Atividade());
   }
@@ -38,9 +42,5 @@ export class AppComponent implements OnInit {
     return;
   }
   alert('Campo Obrigatorio');
-
-  // removeAtividade(){
-  //   this.tarefas.splice((tarefa), 1)
-  // }
 }
 }
